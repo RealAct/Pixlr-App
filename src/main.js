@@ -7,17 +7,13 @@ const { classifyUrl, isPixlrUrl } = require('./urls');
 const { IMAGE_EXTENSIONS, imagePathsFromArgv, readImageFiles } = require('./files');
 const windowState = require('./window-state');
 const { buildMenu } = require('./menu');
+const { showAbout } = require('./about');
 
 const PARTITION = 'persist:pixlr';
 const EDITOR_URL = appUrl(APPS.find((a) => a.id === 'editor'));
 const OFFLINE_PAGE = path.join(__dirname, 'offline.html');
 
 app.setName('Pixlr Desktop');
-app.setAboutPanelOptions({
-  applicationName: 'Pixlr Desktop',
-  applicationVersion: app.getVersion(),
-  credits: 'Unofficial desktop client for pixlr.com. Pixlr is a trademark of its owner.',
-});
 
 // Files opened before the first window exists (macOS "Open With", or files
 // passed on the command line) wait here.
@@ -254,7 +250,7 @@ function showDownloads() {
 
 app.whenReady().then(() => {
   configureSession();
-  Menu.setApplicationMenu(buildMenu({ createWindow, openImages, showDownloads }));
+  Menu.setApplicationMenu(buildMenu({ createWindow, openImages, showDownloads, showAbout: () => showAbout(mainWindow()) }));
 
   createWindow(pendingPaths.length ? EDITOR_URL : HOME_URL, { restoreState: true });
   if (pendingPaths.length) {

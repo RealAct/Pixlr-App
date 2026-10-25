@@ -2,6 +2,8 @@
 
 An unofficial desktop client for the [pixlr.com](https://pixlr.com) suite on macOS, Windows and Linux. It runs Pixlr Editor, Express, Remove Background, the AI generators and the other Pixlr tools in their own app window, so you don't need to open a web browser.
 
+Made by **Eli Linares** · [realact.net](https://realact.net)
+
 > Pixlr Desktop is not made by or affiliated with Pixlr. "Pixlr" is a trademark of its owner.
 
 ## What it does
@@ -63,6 +65,8 @@ Add these repository secrets and remove `CSC_IDENTITY_AUTO_DISCOVERY: false` fro
 | `src/files.js` | Supported image types and reading files from disk |
 | `src/window-state.js` | Remembers window size and position |
 | `src/offline.html` | Shown when pixlr.com can't be reached |
+| `src/about.js`, `src/about.html` | The About window |
+| `build/icon.png` | App icon (electron-builder generates the macOS and Windows formats from it) |
 
 ## Security
 
