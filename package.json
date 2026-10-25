@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "description": "Unofficial cross-platform desktop client for the pixlr.com suite",
   "main": "src/main.js",
-  "author": "Eli",
+  "author": {
+    "name": "Eli Linares",
+    "url": "https://realact.net"
+  },
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -28,6 +31,7 @@
     },
     "files": [
       "src/**/*",
+      "build/icon.png",
       "package.json"
     ],
     "fileAssociations": [
@@ -99,11 +103,13 @@
         "deb",
         "tar.gz"
       ],
-      "maintainer": "Eli <realact@users.noreply.github.com>",
+      "maintainer": "Eli Linares <realact@users.noreply.github.com>",
       "syncDesktopName": true,
       "executableName": "pixlr-desktop"
     },
-    "artifactName": "Pixlr-Desktop-${version}-${os}-${arch}.${ext}"
+    "artifactName": "Pixlr-Desktop-${version}-${os}-${arch}.${ext}",
+    "copyright": "Copyright \u00a9 2026 Eli Linares"
   },
-  "desktopName": "pixlr-desktop.desktop"
+  "desktopName": "pixlr-desktop.desktop",
+  "homepage": "https://realact.net"
 }

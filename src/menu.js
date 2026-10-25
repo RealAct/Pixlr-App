@@ -16,7 +16,7 @@ function focusedContents() {
   return win ? win.webContents : null;
 }
 
-function buildMenu({ createWindow, openImages, showDownloads }) {
+function buildMenu({ createWindow, openImages, showDownloads, showAbout }) {
   const go = (url) => {
     const wc = focusedContents();
     if (wc) wc.loadURL(url);
@@ -33,7 +33,7 @@ function buildMenu({ createWindow, openImages, showDownloads }) {
     ...(isMac ? [{
       label: app.name,
       submenu: [
-        { role: 'about' },
+        { label: `About ${app.name}`, click: () => showAbout() },
         { type: 'separator' },
         { role: 'services' },
         { type: 'separator' },
@@ -117,7 +117,7 @@ function buildMenu({ createWindow, openImages, showDownloads }) {
       submenu: [
         { label: 'Pixlr Support', click: () => shell.openExternal('https://pixlr.com/support/') },
         { label: 'Open Current Page in Browser', click: () => { const wc = focusedContents(); if (wc && wc.getURL().startsWith('https://')) shell.openExternal(wc.getURL()); } },
-        ...(isMac ? [] : [{ type: 'separator' }, { role: 'about' }]),
+        ...(isMac ? [] : [{ type: 'separator' }, { label: `About ${app.name}`, click: () => showAbout() }]),
       ],
     },
   ];
