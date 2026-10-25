@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Pixlr Desktop: can't reach Pixlr</title>
+<style>
+  :root { color-scheme: light dark; --bg: #f5f6f8; --fg: #1c1f24; --muted: #5c6370; --accent: #2f7cf6; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #16181c; --fg: #e8eaee; --muted: #9aa1ad; } }
+  body { margin: 0; height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--fg);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 440px; padding: 24px; text-align: center; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  p { color: var(--muted); margin: 0 0 20px; }
+  a { display: inline-block; padding: 10px 20px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; }
+  code { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Can't reach pixlr.com</h1>
+  <p>Pixlr runs on Pixlr's servers, so the app needs an internet connection. It will try again automatically when you're back online.</p>
+  <a id="retry" href="https://pixlr.com/">Try again</a>
+  <p><code id="error"></code></p>
+</main>
+<script>
+  const params = new URLSearchParams(location.search);
+  const target = params.get('url');
+  if (target && /^https:\/\/([a-z0-9-]+\.)*pixlr\.com\//i.test(target)) document.getElementById('retry').href = target;
+  document.getElementById('error').textContent = params.get('error') || '';
+  window.addEventListener('online', () => { location.href = document.getElementById('retry').href; });
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+{
+  "name": "pixlr-desktop",
+  "productName": "Pixlr Desktop",
+  "version": "0.1.0",
+  "description": "Unofficial cross-platform desktop client for the pixlr.com suite",
+  "main": "src/main.js",
+  "author": "Eli",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^44.9.3",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.realact.pixlrdesktop",
+    "productName": "Pixlr Desktop",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "fileAssociations": [
+      {
+        "ext": [
+          "png",
+          "jpg",
+          "jpeg",
+          "webp",
+          "gif",
+          "bmp",
+          "psd",
+          "pxd",
+          "svg",
+          "tif",
+          "tiff",
+          "avif",
+          "heic"
+        ],
+        "name": "Image",
+        "role": "Editor"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "hardenedRuntime": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "category": "Graphics",
+      "target": [
+        "AppImage",
+        "deb",
+        "tar.gz"
+      ],
+      "maintainer": "Eli <realact@users.noreply.github.com>",
+      "syncDesktopName": true,
+      "executableName": "pixlr-desktop"
+    },
+    "artifactName": "Pixlr-Desktop-${version}-${os}-${arch}.${ext}"
+  },
+  "desktopName": "pixlr-desktop.desktop"
+}
